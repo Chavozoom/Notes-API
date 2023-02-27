@@ -1,7 +1,7 @@
 import express from "express";
 import noteRoute from "./src/routes/note.route.js";
 import connectDatabase from "./src/database/db.js";
-import swaggerRoute from "./src/routes/swagger.route.js";
+import swaggerRoute from "./src/routes/swagger.route.cjs";
 import dotenv from "dotenv";
 dotenv.config();
 
