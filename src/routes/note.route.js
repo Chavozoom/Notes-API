@@ -9,9 +9,9 @@ router.post("/", create);
 router.get("/", findAll);
 
 // Delete a Note with id
-router.delete("/:id", deleteNote);
+router.delete("/delete/:id", deleteNote);
 
 // Delete all notes
-router.delete("/", deleteAll);
+router.delete("/delete", deleteAll);
 
 export default router;

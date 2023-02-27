@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Notes API Documentation",
+        "contact": {
+            "email": "isaquechaves10500@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "decription:": "localhost"
+        }
+    ],
+    "paths": {
+        "/note/": {
+            "post": {
+                "summary": "Create a new note",
+                "description": "Route responsible for creating a new note",
+                "tags": [
+                    "Note"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Note"
+                            },
+                            "examples": {
+                                "Note": {
+                                    "value": {
+                                        "title": "Day 3",
+                                        "text": "Today was a good day"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Not Found"
+                    },
+                    "201": {
+                        "description": "Note created successfully",
+                        "content": {
+                            "application/json": {
+                                "schemma": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Note"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/note": {
+            "get": {
+                "summary": "Get all the Notes",
+                "description": "Route responsible for get all notes",
+                "tags": [
+                    "Note"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Not Found"
+                    },
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schemma": {
+                                    "type": "array",
+                                    "$ref": "#/components/schemas/Note"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/note/delete/": {
+            "delete": {
+                "summary": "Delete all Notes",
+                "description": "Route responsible for deleting all Notes",
+                "tags": [
+                    "Note"
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Note not found"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/note/delete/{id}": {
+            "delete": {
+                "summary": "Delete a Note",
+                "description": "Route responsible for deleting a Note",
+                "tags": [
+                    "Note"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "string",
+                        "description": "Note ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Note not found"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Note": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "String"
+                    },
+                    "text": {
+                        "type": "String",
+                        "required": true
+                    }
+                }
+            }
+        }
+    }
+}

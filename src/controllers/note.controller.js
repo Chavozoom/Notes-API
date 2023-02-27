@@ -53,7 +53,7 @@ export const deleteNote = async (req, res) => {
     const note = await findByIdService(id);
 
     if (!note) {
-      return res.status(404).send({ message: "Note not found" });
+      return res.status(400).send({ message: "Note not found" });
     }
     await findByIdAndRemoveService(id);
 
@@ -68,6 +68,11 @@ export const deleteNote = async (req, res) => {
 // Delete all Notes from the database.
 export const deleteAll = async (req, res) => {
   try {
+    const notes = await findAllService();
+    if (notes.length === 0) {
+      res.status(404).send({ message: "Empty" });
+    }
+
     await deleteManyService({});
     return res.status(200).send({ message: "Success" });
   } catch (error) {
