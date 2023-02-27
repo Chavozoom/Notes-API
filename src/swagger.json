@@ -9,6 +9,10 @@
     },
     "servers": [
         {
+            "url": "https://notes-api-sdvk.onrender.com",
+            "decription:": "Render Server"
+        },
+        {
             "url": "http://localhost:8080",
             "decription:": "localhost"
         }
